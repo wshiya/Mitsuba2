@@ -1,0 +1,87 @@
+<scene version='2.0.0'>
+    <integrator type='path'>
+         <!-- Instantiate a path tracer with a max. path length of 8 -->
+        <integer name="max_depth" value="8"/>
+    </integrator>
+
+   <!-- Instantiate a perspective camera with 34.5 degrees field of view -->
+    <sensor type="perspective">
+    	<float name="fov" value="34.5"/>
+        <float name="near_clip" value="0.01"/>
+        <float name="far_clip" value="10000"/>
+        <transform name="to_world">
+            <lookat target="0.0, 0.0, 0.0"
+                    origin="0.0, 0.0, -2.0"
+                    up    ="0.0, 1.0, 0.0"/>
+        </transform>
+        
+        <sampler type="independent">
+            <integer name="sample_count" value="32"/>
+        </sampler>
+
+        <!-- Render with 32 samples per pixel using a basic
+             independent sampling strategy -->
+
+        <film type="hdrfilm">
+            <rfilter type="gaussian"/>
+            <integer name="width" value="256"/>
+            <integer name="height" value="256"/>
+        </film>
+    </sensor>
+
+
+    <emitter type="envmap" id="emitter-envmap">
+        <string name="filename" value="envmap.exr" />
+        <transform name="to_world">
+            <rotate x="1" angle="0" />
+        </transform>
+        <float name="scale" value="1" />
+    </emitter>
+
+
+    <texture type="checkerboard" id="texture-checkerboard">
+        <rgb name="color0" value="0.4" />
+        <rgb name="color1" value="0.2" />
+        <transform name="to_uv">
+            <scale x="8.000000" y="8.000000" />
+        </transform>
+    </texture>
+
+    <bsdf type="diffuse" id="bsdf-plane">
+        <ref name="reflectance" id="texture-checkerboard" />
+    </bsdf>
+
+  
+
+    <!-- Add a Sphere mesh made -->
+    <shape type="sphere">
+        <transform name="to_world">
+            <scale value="0.6"/>
+            <translate x="0.0" y="0.0" z="1.0"/>
+        </transform>
+        <bsdf type="diffuse">
+            <rgb name="reflectance" value="0.9 0.9 0.9"/>
+        </bsdf>    
+    </shape>
+
+    <shape type="rectangle">
+            <transform name="to_world">
+                <rotate x="1" angle="180.0" />
+                <rotate z="1" angle="0" />
+                <scale x="2.5" y="2.5" />
+                <translate x="0.0" y="0.0" z="5.0"/>                
+            </transform>
+         <boolean name="flip_normals" value ="false"/>   
+        <bsdf type="diffuse">
+            <texture name="reflectance" type="checkerboard">
+                <transform name="to_uv">
+                <scale x="5" y="5" />
+                </transform>
+            </texture>
+        </bsdf>
+    </shape>
+
+
+ 
+
+</scene>
