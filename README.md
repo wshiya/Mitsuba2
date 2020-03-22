@@ -10,5 +10,5 @@
 - SimplePolar
   - SimpleSphereCeckerBack + 2 linera polarizer rectangles
   - run: mitsuba -m scalar_spectral_polarized polar_simple.xml
-  j- If you would change the angle of the one linear polarizer angle, you could see the polarization effect.
+  - If you would change the angle of the one linear polarizer angle, you could see the polarization effect.
   
