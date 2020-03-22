@@ -1,46 +1,49 @@
 <scene version='2.0.0'>
-    <integrator type='direct'>
-        <integer name="emitter_samples" value="4"/>
-        <integer name="bsdf_samples" value="0"/>
+    <integrator type='path'>
+         <!-- Instantiate a path tracer with a max. path length of 8 -->
+        <integer name="max_depth" value="8"/>
     </integrator>
 
+   <!-- Instantiate a perspective camera with 34.5 degrees field of view -->
     <sensor type="perspective">
     	<float name="fov" value="34.5"/>
         <float name="near_clip" value="0.01"/>
         <float name="far_clip" value="10000"/>
         <transform name="to_world">
             <lookat target="0.0, 0.0, 0.0"
-                    origin="0.0, 0.0, -10.5"
+                    origin="0.0, 0.0, -2.0"
                     up    ="0.0, 1.0, 0.0"/>
         </transform>
+        
+        <sampler type="independent">
+            <integer name="sample_count" value="1200"/>
+        </sampler>
 
+        <!-- Render with 32 samples per pixel using a basic
+             independent sampling strategy -->
 
         <film type="hdrfilm">
             <rfilter type="gaussian"/>
             <integer name="width" value="256"/>
             <integer name="height" value="256"/>
         </film>
-
-        <sampler type="independent">
-            <integer name="sample_count" value="4"/>
-        </sampler>
     </sensor>
 
+    <!-- Add a Sphere mesh made -->
     <shape type="sphere">
         <transform name="to_world">
-            <scale value="2"/>
-            <translate x="1" y="0" z="0"/>
+            <scale value="0.6"/>
+            <translate x="0.0" y="0.0" z="1.0"/>
         </transform>
-        <bsdf type="diffuse"/>
+        <bsdf type="diffuse">
+            <rgb name="reflectance" value="0.9 0.9 0.9"/>
+        </bsdf>    
     </shape>
 
-    <emitter type="point">
-        <point name="position" x="2" y="-6.0" z="-4.5"/>
-        <rgb name="intensity" value="10.0"/>
-    </emitter>
 
     <emitter type="point">
-        <point name="position" x="-3" y="-3.0" z="-0.5"/>
-        <rgb name="intensity" value="1.0"/>
+        <point name="position" x="-5.0" y="0.0" z="0.0"/>
+        <rgb name="intensity" value="50.0"/>
     </emitter>
+
 </scene>
