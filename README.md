@@ -13,4 +13,4 @@
   - If you would change the angle of the one linear polarizer angle, you could see the polarization effect.
   
 test
-$ \sigma = \int dx $, $$\sigma = \int dx $$
+$$\sigma = \int dx $$
