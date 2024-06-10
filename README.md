@@ -14,7 +14,7 @@
   
 test
 $$\sigma = \int dx $$
-$\mu = (\mu_0, \mu_1)$は$\mu = (\mu_0, \mu_1)$
+$\mu = (\mu_0, \mu_1)$ は $\mu = (\mu_0, \mu_1)$ 
 $$\mu = (\mu_0, \mu_1)$$は$$\mu = (\mu_0, \mu_1)$$
 
 
