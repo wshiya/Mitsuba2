@@ -12,3 +12,5 @@
   - run: mitsuba -m scalar_rgb_polarized polar_simple.xml or use "scalar_spectral_polarized" variant.
   - If you would change the angle of the one linear polarizer angle, you could see the polarization effect.
   
+test
+$ \sigma = \int dx $, $$\sigma = \int dx $$
